@@ -56,7 +56,8 @@ int main()
 	quartile3= (mid) % 2 == 0 ? (num_array[q3] + num_array[q3 - 1]) / 2
 				: num_array[q3];
 	cout << "The third quartile is " << quartile3 << endl;
-	
+	//have to rework the logic here.
+	//copy the logic for now until you get a hang of the syntax.
 	return 0;
 }
 
