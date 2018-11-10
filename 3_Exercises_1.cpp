@@ -20,11 +20,11 @@ int main()
 {
 	cout <<  "Enter the integers: " << endl;
 	double number;
-	vector<double> num_array;
+	vector<double> num_array, q1_array, q3_array;
 	typedef vector<double>::size_type vecSize;
 
 	while(cin >> number){
-		cout << "Hello Akash! You Rock!" << endl;		
+		//cout << "Hello Akash! You Rock!" << endl;		
 		num_array.push_back(number);
 	}
 
@@ -43,23 +43,65 @@ int main()
 	median = size % 2 == 0 ? (num_array[mid] + num_array[mid - 1]) / 2
 				: num_array[mid];
 	cout << "The median is " << median << endl;
+	
+	//if size of vector is even, split in two halves
+	
+	if(size % 2 == 0){
+		for(int i = 0; i < mid; ++i){
+			q1_array.push_back(num_array[i]);
+		}
+		sort(q1_array.begin(),q1_array.end());
+		vecSize length = q1_array.size();		
+		vecSize quart = length/2;
+		
+		double quartile1;
+		quartile1 = length % 2 == 0 ? (q1_array[quart] + q1_array[quart - 1]) / 2
+				: q1_array[quart];
+		cout << "The first quartile is " << quartile1 << endl;
+	
+		for(int i = mid; i < size; ++i){
+			q3_array.push_back(num_array[i]);
+		}
+		sort(q3_array.begin(),q3_array.end());
+		vecSize length_2 = q3_array.size();		
+		vecSize quart3 = length_2/2;
+		
+		double quartile3;
+		quartile3 = length_2 % 2 == 0 ? (q3_array[quart3] + q3_array[quart3 - 1]) / 2
+				: q3_array[quart3];
+		cout << "The third quartile is " << quartile3 << endl;
+	}	
 
-	vecSize q1 = mid/2;
-	vecSize q3 = (mid +q1);
 
-	double quartile1, quartile3;
+	//if size of vector is odd, make two halves excluding median
+	else{
+		for(int i = 0; i < mid; ++i){
+			q1_array.push_back(num_array[i]);
+		}
+		sort(q1_array.begin(),q1_array.end());
+		vecSize length = q1_array.size();		
+		vecSize quart = length/2;
+		
+		double quartile1;
+		quartile1 = length % 2 == 0 ? (q1_array[quart] + q1_array[quart - 1]) / 2
+				: q1_array[quart];
+		cout << "The first quartile is " << quartile1 << endl;
+	
+		for(int i = mid+1; i < size; ++i){
+			q3_array.push_back(num_array[i]);
+		}
+		sort(q3_array.begin(),q3_array.end());
+		vecSize length_2 = q3_array.size();		
+		vecSize quart3 = length_2/2;
+		
+		double quartile3;
+		quartile3 = length_2 % 2 == 0 ? (q3_array[quart3] + q3_array[quart3 - 1]) / 2
+				: q3_array[quart3];
+		cout << "The third quartile is " << quartile3 << endl;
 
-	quartile1 = (mid) % 2 == 0 ? (num_array[q1] + num_array[q1 - 1]) / 2
-				: num_array[q1];
-	cout << "The first quartile is " << quartile1 << endl;
 
-	quartile3= (mid) % 2 == 0 ? (num_array[q3] + num_array[q3 - 1]) / 2
-				: num_array[q3];
-	cout << "The third quartile is " << quartile3 << endl;
-	//have to rework the logic here.
-	//copy the logic for now until you get a hang of the syntax.
-//Checking git functionality.
-//git is cool.
+	}
+
 	return 0;
 }
 
