@@ -58,6 +58,8 @@ int main()
 	cout << "The third quartile is " << quartile3 << endl;
 	//have to rework the logic here.
 	//copy the logic for now until you get a hang of the syntax.
+//Checking git functionality.
+//git is cool.
 	return 0;
 }
 
